@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../components/styles/Header.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes";
 import logo from "../../images/logo.svg";
 import avatar from "../../images/avatar.jpg";
@@ -9,6 +9,10 @@ import { toggleForm } from "../../features/user/userSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const [searchValue, setSearchValue] = useState("");
 
   const {currentUser} = useSelector(({user}) => user);
 
@@ -21,6 +25,11 @@ const Header = () => {
 
   const handleClick = () => {
     if(!currentUser) dispatch(toggleForm(true))
+    else navigate(ROUTES.PROFILE);
+  };
+
+  const handleSearch = ({target: {value}}) => {
+    setSearchValue(value);
   }
   return (
     <div className={styles.header}>
@@ -49,8 +58,8 @@ const Header = () => {
               name="search"
               placeholder="Search for anything.."
               autoComplete="off"
-              onChange={() => {}}
-              value=""
+              onChange={handleSearch}
+              value="searchValue"
             />
           </div>
           {false && <div className={styles.box}></div>}

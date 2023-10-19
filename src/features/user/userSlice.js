@@ -14,6 +14,7 @@ export const creatUser = createAsyncThunk(
     }
   }
 );
+
 export const loginUser = createAsyncThunk(
   "users/loginUser",
   async (payload, thunkAPI) => {
@@ -33,6 +34,19 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+ export const updateUser = createAsyncThunk(
+    "user/updateUser",
+    async (payload, thunkAPI) => {
+      try {
+        const res = await axios.put(`${BASE_URL}/users/${payload.id}`, payload);
+        return res.data;
+      } catch (err) {
+        console.log(err);
+        return thunkAPI.rejectWithValue(err);
+      }
+    }
+  );
+
 const addCurrentUser = (state, { payload }) => {
   state.currentUser = payload;}
 
@@ -45,6 +59,8 @@ const userSlice = createSlice({
     formType: "signup",
     showForm: false,
   },
+
+ 
 
   reducers: {
     addItemToCard: (state, { payload}) => {
@@ -70,14 +86,9 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    // .addCase(getCategories.pending, (state) => {
-    //   state.isLoading = true;
-    // })
     .addCase(creatUser.fulfilled, addCurrentUser)
-    .addCase(loginUser.fulfilled, addCurrentUser);
-    // .addCase(getCategories.rejected, (state) => {
-    //   state.isLoading = false;
-    // });
+    .addCase(loginUser.fulfilled, addCurrentUser)
+    .addCase(updateUser.fulfilled, addCurrentUser);
   },
 });
 
