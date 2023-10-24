@@ -2,18 +2,19 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/Cart.module.css";
 import { sumBy } from "../../utils/common";
+import { addItemToCart, removeItemFromCart } from "../../features/user/userSlice";
 
 const Cart = () => {
     const dispatch = useDispatch();
     const { cart } = useSelector(({ user }) => user);
   
-    // const changeQuantity = (item, quantity) => {
-    //   dispatch(addItemToCart({ ...item, quantity }));
-    // };
+    const changeQuantity = (item, quantity) => {
+      dispatch(addItemToCart({ ...item, quantity }));
+    };
   
-    // const removeItem = (id) => {
-    //   dispatch(removeItemFromCart(id));
-    // };
+    const removeItem = (id) => {
+      dispatch(removeItemFromCart(id));
+    };
   
     return (
       <section className={styles.cart}>
@@ -43,9 +44,9 @@ const Cart = () => {
                     <div className={styles.quantity}>
                       <div
                         className={styles.minus}
-                        onClick={() => {}}
-                        //   changeQuantity(item, Math.max(1, quantity - 1))
-                        // }
+                        onClick={() => 
+                          changeQuantity(item, Math.max(1, quantity - 1))
+                        }
                       >
                         <svg className="icon">
                           <use
@@ -58,8 +59,8 @@ const Cart = () => {
   
                       <div
                         className={styles.plus}
-                        onClick={() => {}
-                        //   changeQuantity(item, Math.max(1, quantity + 1))
+                        onClick={() => 
+                          changeQuantity(item, Math.max(1, quantity + 1))
                         }
                       >
                         <svg className="icon">
@@ -74,8 +75,8 @@ const Cart = () => {
   
                     <div
                       className={styles.close}
-                      onClick={() => {}}
-                        // removeItem(item.id)}
+                      onClick={() => 
+                        removeItem(item.id)}
                     >
                       <svg className="icon">
                         <use
