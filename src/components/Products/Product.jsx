@@ -22,6 +22,7 @@ const Product = (item) => {
     setCurrentImage(images[0]);
   }, [images]);
 
+
   const addToCart = () => {
     dispatch(addItemToCart(item));
   };
@@ -71,7 +72,7 @@ const Product = (item) => {
         <p className={styles.description}>{description}</p>
 
         <div className={styles.actions}>
-          <button
+        <button
             onClick={addToCart}
             className={styles.add}
             disabled={!currentSize}

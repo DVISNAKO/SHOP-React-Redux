@@ -63,19 +63,19 @@ const userSlice = createSlice({
  
 
   reducers: {
-    addItemToCard: (state, { payload}) => {
-        let newCart = [...state.cart];
-        const found = state.cart.find(({ id }) => id === payload.id);
-  
-        if (found) {
-          newCart = newCart.map((item) => {
-            return item.id === payload.id
-              ? { ...item, quantity: payload.quantity || item.quantity + 1 }
-              : item;
-          });
-        } else newCart.push({ ...payload, quantity: 1 });
-  
-        state.cart = newCart;
+    addItemToCart: (state, { payload }) => {
+      let newCart = [...state.cart];
+      const found = state.cart.find(({ id }) => id === payload.id);
+
+      if (found) {
+        newCart = newCart.map((item) => {
+          return item.id === payload.id
+            ? { ...item, quantity: payload.quantity || item.quantity + 1 }
+            : item;
+        });
+      } else newCart.push({ ...payload, quantity: 1 });
+
+      state.cart = newCart;
     },
     toggleForm: (state, {payload}) => {
       state.showForm = payload;
