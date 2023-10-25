@@ -1,3 +1,19 @@
+functionality:
+1. create new user
+2. log in
+3. open product
+4. select image in product
+5. select size in product
+6. add product to cart
+7. modal product is add to cart
+8. open cart
+9. add and remove product quntity
+10. remove product from cart
+11. select product category
+12. product filter
+13. product search
+
+
 ![image](https://github.com/DVISNAKO/SHOP-React-Redux/assets/106438454/8cee9f61-e112-4923-abf4-47b4802530f5)
 
 
