@@ -1,3 +1,6 @@
+![image](https://github.com/DVISNAKO/SHOP-React-Redux/assets/106438454/8cee9f61-e112-4923-abf4-47b4802530f5)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
