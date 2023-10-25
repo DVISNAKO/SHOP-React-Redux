@@ -15,6 +15,7 @@ const Product = (item) => {
 
   const [currentImage, setCurrentImage] = useState();
   const [currentSize, setCurrentSize] = useState();
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     if (!images.length) return;
@@ -25,7 +26,10 @@ const Product = (item) => {
 
   const addToCart = () => {
     dispatch(addItemToCart(item));
+    setModal(!modal)
   };
+
+  const visible = modal ? '' : 'hidden';
 
   return (
     <section className={styles.product}>
@@ -81,6 +85,8 @@ const Product = (item) => {
           </button>
           <button className={styles.favourite}>Add to favourites</button>
         </div>
+
+        <div className={`modal ${visible}`}>Product add to cart</div>
 
         <div className={styles.bottom}>
           <div className={styles.purchase}>19 people purchased</div>

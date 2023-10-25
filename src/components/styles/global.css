@@ -128,3 +128,15 @@ input {
   align-items: center;
   justify-content: center;
 }
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  margin: 25px;
+  width: 200px;
+  height: 30px;
+  color: green;
+ 
+}
